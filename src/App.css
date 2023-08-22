@@ -179,6 +179,15 @@ li > span:last-of-type {
   text-align: right;
 }
 
+.hideCart {
+  font-size: 30px;
+  color: #00ccbc;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  display: none;
+}
+
 .restaurant {
   display: flex;
   flex-direction: column;
@@ -262,13 +271,6 @@ footer {
   aside,
   .hideCart {
     display: none;
-  }
-  .hideCart {
-    font-size: 30px;
-    color: #00ccbc;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
   }
   .show {
     display: block;
