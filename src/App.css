@@ -249,6 +249,9 @@ footer {
   article {
     width: 100%;
   }
+  article:nth-child(even) {
+    margin-right: 0;
+  }
 }
 @media (max-width: 890px) {
   .banner + img {
