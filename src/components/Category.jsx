@@ -1,6 +1,6 @@
 import Product from "./Product";
 
-const Category = ({ data }) => {
+const Category = ({ data, setCart, cart, setTotal, sousTotal }) => {
   return (
     <div className="restaurant">
       {data.categories.map((category) => {
@@ -11,8 +11,17 @@ const Category = ({ data }) => {
             <section key={name}>
               <h2>{name}</h2>
 
-              {meals.map((product) => {
-                return <Product data={product} />;
+              {meals.map((product, index) => {
+                return (
+                  <Product
+                    data={product}
+                    setCart={setCart}
+                    cart={cart}
+                    key={index}
+                    setTotal={setTotal}
+                    sousTotal={sousTotal}
+                  />
+                );
               })}
             </section>
           )

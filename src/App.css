@@ -1,4 +1,5 @@
 @import url("/fonts/stylesheet.css");
+@import url("./assets/icons/style.css");
 * {
   box-sizing: border-box;
 }
@@ -7,7 +8,7 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 14px;
   background-color: rgb(233, 235, 235);
-  line-height: 1.3rem;
+  line-height: 1.5rem;
 }
 
 h1,
@@ -15,6 +16,7 @@ h2,
 h3,
 footer {
   color: rgb(46, 51, 51);
+  line-height: inherit;
 }
 
 h1 {
@@ -33,6 +35,8 @@ h2 {
 h3 {
   font-size: 19px;
   margin-bottom: 8px;
+  max-height: 48px;
+  overflow: hidden;
 }
 
 a {
@@ -43,6 +47,14 @@ a {
 a:hover {
   color: #00ccbc;
   transition: 0.25s;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
 }
 
 img {
@@ -70,7 +82,7 @@ header img {
 }
 
 /* RESTAURANT */
-main > div:first-child {
+.content > div:first-child {
   background-color: rgb(243, 245, 245);
   height: 250px;
   padding: 0;
@@ -78,46 +90,104 @@ main > div:first-child {
   align-items: center;
   justify-content: center;
 }
-main > div:first-child .banner {
-  flex: 1;
-  margin-right: 50px;
+.content > div:first-child span {
+  color: rgb(134, 138, 138);
+  font-size: 19px;
 }
-main > div:first-child > div {
+.content > div:first-child img {
+  height: 200px;
+}
+
+div.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-main > div:first-child > div span {
-  color: rgb(134, 138, 138);
-  font-size: 19px;
+
+.banner {
+  flex: 1;
+  margin-right: 50px;
 }
-main > div:first-child > div img {
-  height: 200px;
+
+main {
+  display: flex;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.cart {
+  width: 350px;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px #dadddd;
+  padding: 20px;
+}
+.cart button {
+  background-color: #00ccbc;
+  width: 100%;
+  color: #f1f1f1;
+  padding: 20px;
+}
+
+aside > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+aside > div:nth-child(odd) {
+  border-top: 1px solid #d6dbdb;
+}
+aside > div:last-child {
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 0px;
+}
+
+li {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+}
+li div {
+  width: 100px;
+  display: flex;
+}
+li .handleStock > button {
+  margin: 0 5px;
+  height: 25px;
+  aspect-ratio: 1/1;
+  padding: 5px;
+  width: auto;
+  border-radius: 50%;
+  border: 2px solid #00ccbc;
+  background-color: #f1f1f1;
+  color: #00ccbc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+li .title {
+  flex: 1;
+}
+li > span:last-of-type {
+  width: 70px;
+  text-align: right;
 }
 
 .restaurant {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 }
 .restaurant section {
-  max-width: 1024px;
   display: flex;
   flex-wrap: wrap;
-}
-.restaurant article {
-  background-color: rgb(243, 245, 245);
-  padding: 15px;
-  height: 160px;
-  width: calc(50% - 10px);
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.restaurant article:nth-child(even) {
-  margin-right: 20px;
 }
 .restaurant img {
   width: 130px;
@@ -128,7 +198,26 @@ main > div:first-child > div img {
   margin: 10px 0;
 }
 
-.content {
+p {
+  height: 45px;
+  overflow: hidden;
+}
+
+article {
+  background-color: rgb(243, 245, 245);
+  padding: 15px;
+  height: 160px;
+  width: calc(50% - 10px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+article:nth-child(even) {
+  margin-right: 20px;
+}
+article > div:first-child {
   color: #808484;
 }
 
@@ -137,8 +226,54 @@ span.popular {
   margin-left: 20px;
 }
 
+.showCart {
+  display: none;
+}
+
 /* FOOTER */
 footer {
   padding: 20px;
   text-align: center;
+}
+
+@media (max-width: 1100px) {
+  article {
+    width: 100%;
+  }
+}
+@media (max-width: 890px) {
+  .banner + img {
+    display: none;
+  }
+}
+@media (max-width: 740px) {
+  .cart {
+    position: fixed;
+    top: auto;
+    bottom: 0px;
+    width: 100%;
+    left: 0;
+    padding: 20px;
+  }
+  .showCart,
+  .cart > i {
+    display: inline;
+  }
+  aside,
+  .hideCart {
+    display: none;
+  }
+  .hideCart {
+    font-size: 30px;
+    color: #00ccbc;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .show {
+    display: block;
+  }
+  .hide {
+    display: none;
+  }
 }/*# sourceMappingURL=App.css.map */
