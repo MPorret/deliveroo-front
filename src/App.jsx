@@ -19,7 +19,8 @@ function App() {
 
   useEffect(() => {
     fetchData();
-  });
+    console.log("coucou");
+  }, []);
 
   return (
     <>
