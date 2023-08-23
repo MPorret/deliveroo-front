@@ -23,9 +23,15 @@ function App() {
 
   return (
     <>
-      <Header />
-      {isLoading ? "... chargement" : <Restaurant data={data} />}
-      <Footer />
+      {isLoading ? (
+        "... chargement"
+      ) : (
+        <>
+          <Header data={data} />
+          <Restaurant data={data} />
+          <Footer />
+        </>
+      )}
     </>
   );
 }

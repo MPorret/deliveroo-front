@@ -1,18 +1,23 @@
 const Product = ({ data, setCart, cart, setTotal, sousTotal }) => {
   const { title, description, price, picture, popular } = data;
+
+  const handleClick = ({ cart, title, price, quantity }) => {
+    const isPresent = cart.find((product) => {
+      return product.title === title;
+    });
+    if (isPresent) {
+      return null;
+    } else {
+      const tab = [...cart];
+      tab.push({ title, quantity: 1, price });
+      setCart(tab);
+    }
+  };
+
   return (
     <article
       onClick={() => {
-        const isPresent = cart.find((product) => {
-          return product.title === title;
-        });
-        if (isPresent) {
-          return null;
-        } else {
-          const tab = [...cart];
-          tab.push({ title, quantity: 1, price });
-          setCart(tab);
-        }
+        handleClick({ cart, title, price });
       }}
     >
       <div>

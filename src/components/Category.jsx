@@ -2,7 +2,7 @@ import Product from "./Product";
 
 const Category = ({ data, setCart, cart, setTotal, sousTotal }) => {
   return (
-    <div className="restaurant">
+    <div className="menu">
       {data.categories.map((category) => {
         const { name, meals } = category;
 

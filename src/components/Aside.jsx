@@ -33,19 +33,18 @@ const Aside = ({ cart, setCart, setTotal, total, sousTotal, setSousTotal }) => {
     }
   };
 
+  const handleShowCart = () => {
+    document.querySelector(".cart").classList.toggle("show");
+    document.querySelector(".hideCart").classList.toggle("show");
+    document.querySelector(".showCart").classList.toggle("hide");
+  };
+
   return (
-    <div className="cart">
-      <div
-        className="hideCart"
-        onClick={() => {
-          document.querySelector("aside").classList.remove("show");
-          document.querySelector(".hideCart").classList.remove("show");
-          document.querySelector(".showCart").classList.remove("hide");
-        }}
-      >
+    <aside>
+      <div className="hideCart" onClick={handleShowCart}>
         <i className="icon-chevron-down" />
       </div>
-      <aside>
+      <div className="cart">
         <button
           onClick={() => {
             handleClick({ action: "submit" });
@@ -94,18 +93,11 @@ const Aside = ({ cart, setCart, setTotal, total, sousTotal, setSousTotal }) => {
           <span>Total</span>
           <span>{(Math.round(total * 100) / 100).toFixed(2)} €</span>
         </div>
-      </aside>
-      <button
-        className="showCart"
-        onClick={() => {
-          document.querySelector("aside").classList.add("show");
-          document.querySelector(".hideCart").classList.add("show");
-          document.querySelector(".showCart").classList.add("hide");
-        }}
-      >
+      </div>
+      <button className="showCart" onClick={handleShowCart}>
         Voir le panier
       </button>
-    </div>
+    </aside>
   );
 };
 

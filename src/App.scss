@@ -66,64 +66,121 @@ img {
 
 .container {
   max-width: 1024px;
-  width: 96vw;
+  width: 100vw;
 }
 
 /* HEADER */
 header {
   background-color: rgb(243, 245, 245);
   border-bottom: 1px solid #e9ebeb;
-  height: 60px;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 
-  img {
-    height: 40px;
-  }
-}
-
-/* RESTAURANT */
-// Bandeau
-.content {
   & > div:first-child {
-    background-color: rgb(243, 245, 245);
-    height: 250px;
-    padding: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5eaea;
+
+    & > img {
+      height: 40px;
+    }
+  }
+
+  & > div:last-child {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    span {
-      color: rgb(134, 138, 138);
-      font-size: 19px;
-    }
+    gap: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
     img {
       height: 200px;
     }
+
+    span {
+      color: rgb(134, 138, 138);
+      font-size: 16px;
+    }
   }
 }
 
-div.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.banner {
-  flex: 1;
-  margin-right: 50px;
-}
-
-// Products
+/* MENU */
 main {
   display: flex;
   gap: 20px;
   margin: 0 auto;
 }
 
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  img {
+    width: 130px;
+    aspect-ratio: 1/1;
+  }
+
+  p,
+  span {
+    margin: 10px 0;
+  }
+}
+
+article {
+  background-color: rgb(243, 245, 245);
+  padding: 15px;
+  height: 160px;
+  width: calc(50% - 10px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  &:nth-child(even) {
+    margin-right: 20px;
+  }
+
+  & > div {
+    color: #808484;
+  }
+}
+
+span.popular {
+  color: #ff8000;
+  margin-left: 20px;
+}
+
 .cart {
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+
+    &:nth-child(odd) {
+      border-top: 1px solid #d6dbdb;
+    }
+
+    &:last-child {
+      font-weight: bold;
+      font-size: 18px;
+      padding-bottom: 0px;
+    }
+  }
+}
+
+aside {
   width: 350px;
   height: fit-content;
   position: sticky;
@@ -142,24 +199,6 @@ main {
   }
 }
 
-aside {
-  & > div {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-
-    &:nth-child(odd) {
-      border-top: 1px solid #d6dbdb;
-    }
-
-    &:last-child {
-      font-weight: bold;
-      font-size: 18px;
-      padding-bottom: 0px;
-    }
-  }
-}
-
 li {
   margin: 20px 0;
   display: flex;
@@ -170,29 +209,29 @@ li {
     display: flex;
   }
 
-  .handleStock > button {
-    margin: 0 5px;
-    height: 25px;
-    aspect-ratio: 1/1;
-    padding: 5px;
-    width: auto;
-    border-radius: 50%;
-    border: 2px solid #00ccbc;
-    background-color: #f1f1f1;
-    color: #00ccbc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .title {
-    flex: 1;
-  }
-
   & > span:last-of-type {
     width: 70px;
     text-align: right;
   }
+}
+
+.handleStock > button {
+  margin: 0 5px;
+  height: 25px;
+  aspect-ratio: 1/1;
+  padding: 5px;
+  width: auto;
+  border-radius: 50%;
+  border: 2px solid #00ccbc;
+  background-color: #f1f1f1;
+  color: #00ccbc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  flex: 1;
 }
 
 .hideCart {
@@ -204,57 +243,9 @@ li {
   display: none;
 }
 
-.restaurant {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1;
-
-  section {
-    // max-width: 1024px;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  img {
-    width: 130px;
-    aspect-ratio: 1/1;
-  }
-
-  p,
-  span {
-    margin: 10px 0;
-  }
-}
-
 p {
   height: 45px;
   overflow: hidden;
-}
-
-article {
-  background-color: rgb(243, 245, 245);
-  padding: 15px;
-  height: 160px;
-  width: calc(50% - 10px);
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 20px;
-
-  &:nth-child(even) {
-    margin-right: 20px;
-  }
-
-  & > div:first-child {
-    color: #808484;
-  }
-}
-
-span.popular {
-  color: #ff8000;
-  margin-left: 20px;
 }
 
 .showCart {
@@ -268,6 +259,10 @@ footer {
 }
 
 @media (max-width: 1100px) {
+  .container {
+    padding: 10px;
+  }
+
   article {
     width: 100%;
 
@@ -278,13 +273,17 @@ footer {
 }
 
 @media (max-width: 890px) {
-  .banner + img {
+  header > div:last-child > img {
     display: none;
   }
 }
 
 @media (max-width: 740px) {
-  .cart {
+  article {
+    height: fit-content;
+  }
+
+  aside {
     position: fixed;
     top: auto;
     bottom: 0px;
@@ -294,11 +293,11 @@ footer {
   }
 
   .showCart,
-  .cart > i {
+  aside > i {
     display: inline;
   }
 
-  aside,
+  .cart,
   .hideCart {
     display: none;
   }

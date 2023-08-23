@@ -19,34 +19,23 @@ const Restaurant = ({ data }) => {
   }, [sousTotal]);
 
   return (
-    <div className="content">
-      <div>
-        <div className="container">
-          <div className="banner">
-            <h1>{data.restaurant.name}</h1>
-            <span>{data.restaurant.description}</span>
-          </div>
-          <img src={data.restaurant.picture} />
-        </div>
-      </div>
-      <main className="container">
-        <Category
-          data={data}
-          setCart={setCart}
-          cart={cart}
-          setTotal={setTotal}
-          sousTotal={sousTotal}
-        />
-        <Aside
-          cart={cart}
-          setCart={setCart}
-          setTotal={setTotal}
-          total={total}
-          sousTotal={sousTotal}
-          setSousTotal={setSousTotal}
-        />
-      </main>
-    </div>
+    <main className="container">
+      <Category
+        data={data}
+        setCart={setCart}
+        cart={cart}
+        setTotal={setTotal}
+        sousTotal={sousTotal}
+      />
+      <Aside
+        cart={cart}
+        setCart={setCart}
+        setTotal={setTotal}
+        total={total}
+        sousTotal={sousTotal}
+        setSousTotal={setSousTotal}
+      />
+    </main>
   );
 };
 
